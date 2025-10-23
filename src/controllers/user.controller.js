@@ -15,6 +15,10 @@ const BASE_URL = process.env.CORS_ORIGIN;
 const options = {
   httpOnly: true,
   secure: true,
+  sameSite: "none",
+  // httpOnly: true,
+  // secure: process.env.NODE_ENV === "production",
+  // sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
 };
 
 // register user
@@ -109,11 +113,7 @@ export const loginUser = asyncHandler(async (req, res) => {
 
   return res
     .status(200)
-    .cookie("token", token, {
-      httpOnly: true, // cannot be accessed by JS in browser
-      secure: true, // true if using HTTPS
-      sameSite: "none",
-    })
+    .cookie("token", token, options)
     .json(new ApiResponse(200, { user }, "User logged in successfully", true));
 });
 

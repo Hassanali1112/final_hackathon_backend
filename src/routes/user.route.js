@@ -36,5 +36,5 @@ userRouter.route("/forgot-password").post(forgotPassword)
 userRouter.route("/reset-password/:token").post(resetPassword)
 
 // secure routes 
-userRouter.route("/logout").post(verifyJWT, logoutUser)
+userRouter.route("/logout").get(verifyJWT, logoutUser)
 userRouter.route("/get-user").post(verifyJWT, getUser)
