@@ -35,12 +35,14 @@ app.use(cookieParser())
 // routes
 
 import { userRouter } from "./routes/user.route.js";
+import { memberRouter } from "./routes/member.route.js";
+import reportRouter from "./routes/report.route.js";
  
 app.use("/api/v1/auth", userRouter)
 
-import { memberRouter } from "./routes/member.route.js";
 
 app.use("/api/v1/", memberRouter);
+app.use("/api/v1/report", reportRouter);
 
 
 

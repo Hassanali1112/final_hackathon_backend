@@ -16,7 +16,7 @@ const memberSchema = new Schema(
     name: { type: String, required: true },
     relation: { type: String, required: true },
     age: { type: Number, required: true },
-    gender: { type: String, default: "male" },
+    gender: { type: String, enum : ["male", "female"], default: "male" },
     bp: { type: String },
     sugar: { type: String },
     temperature: { type: String },
